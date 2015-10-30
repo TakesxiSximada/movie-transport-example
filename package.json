@@ -1,0 +1,23 @@
+{
+  "name": "movie-transport-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TakesxiSximada/movie-transport-example.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TakesxiSximada/movie-transport-example/issues"
+  },
+  "homepage": "https://github.com/TakesxiSximada/movie-transport-example#readme",
+  "devDependencies": {
+    "binaryjs": "^0.2.1",
+    "msr": "^1.2.9"
+  }
+}
