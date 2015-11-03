@@ -61,6 +61,8 @@ var multiStreamRecorder;
 var audioVideoBlobs = {};
 var recordingInterval = 0;
 var conn = new WebSocket('ws://' + location.host + '/api/movies/recoding');
+
+
 function onMediaSuccess(stream) {
     var video = document.createElement('video');
 
@@ -87,11 +89,35 @@ function onMediaSuccess(stream) {
 
         multiStreamRecorder.video = video;
 
+        // $.ajax({
+        //     type: 'get',
+        //     url: options.dataSource,
+        //     dataType: 'json',
+        //     success: function(json) { next(json); },
+        //     error: function(xhr, text) { error("Failed to load drawing data (reason: " + text + ")"); }
+        // });")")}
+        // })
+
+        var counter = 0;
         multiStreamRecorder.ondataavailable = function(blobs) {
-            conn.send('\n\nMNU_VIDEO');
-            conn.send(blobs.video);
-            conn.send('\n\nMNU_AUDIO');
-            conn.send(blobs.audio);
+            counter += 1;
+            $.ajax({
+                method: 'POST',
+                url: '/api/movies/rest?fmt=audio&count=' + counter,
+                data: blobs.audio,
+                processData: false,
+                contentType: false,
+            });
+            $.ajax({
+                method: 'POST',
+                url: '/api/movies/rest?fmt=video&count=' + counter,
+                data: blobs.video,
+                processData: false,
+                contentType: false,
+            });
+            // conn.send('\n\nMNU_VIDEO');
+            // conn.send(blobs.video);
+            // conn.send(blobs.audio);
             // appendLink(blobs.audio);
             // appendLink(blobs.video);
         };

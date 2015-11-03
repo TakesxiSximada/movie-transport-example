@@ -23,6 +23,7 @@
     "binaryjs": "^0.2.1",
     "font-awesome": "^4.4.0",
     "gulp": "^3.9.0",
+    "jquery": "^2.1.4",
     "mithril": "^0.2.0",
     "mocha": "^2.3.3",
     "mocha-loader": "^0.7.1",
