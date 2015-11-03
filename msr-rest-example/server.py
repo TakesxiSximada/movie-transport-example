@@ -13,7 +13,6 @@ from sandstorm.handlers import YAStaticFileHandler as StaticFileHandler
 
 class PingPongHandler(RequestHandler):
     def get(self):
-        import ipdb; ipdb.set_trace()
         self.write('PONG')
 
 
@@ -30,7 +29,7 @@ class RESTMediaSaveHandler(RequestHandler):
         else:
             print(fmt)
 
-        filename = '{}-{}.{}'.format(fmt, count, ext)
+        filename = 'data/{}-{}.{}'.format(fmt, count, ext)
 
         with open(filename, 'wb') as fp:
             fp.write(self.request.body)
