@@ -87,15 +87,6 @@ function onMediaSuccess(stream) {
 
         multiStreamRecorder.video = video;
 
-        // $.ajax({
-        //     type: 'get',
-        //     url: options.dataSource,
-        //     dataType: 'json',
-        //     success: function(json) { next(json); },
-        //     error: function(xhr, text) { error("Failed to load drawing data (reason: " + text + ")"); }
-        // });")")}
-        // })
-
         var counter = 0;
         multiStreamRecorder.ondataavailable = function(blobs) {
             counter += 1;
