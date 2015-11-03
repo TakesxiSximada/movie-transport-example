@@ -60,7 +60,7 @@ var multiStreamRecorder;
 
 var audioVideoBlobs = {};
 var recordingInterval = 0;
-
+var conn = new WebSocket('ws://' + location.host + '/api/movies/recoding');
 function onMediaSuccess(stream) {
     var video = document.createElement('video');
 
@@ -88,8 +88,12 @@ function onMediaSuccess(stream) {
         multiStreamRecorder.video = video;
 
         multiStreamRecorder.ondataavailable = function(blobs) {
-            appendLink(blobs.audio);
-            appendLink(blobs.video);
+            conn.send('\n\nMNU_VIDEO');
+            conn.send(blobs.video);
+            conn.send('\n\nMNU_AUDIO');
+            conn.send(blobs.audio);
+            // appendLink(blobs.audio);
+            // appendLink(blobs.video);
         };
 
         function appendLink(blob) {
@@ -112,6 +116,11 @@ function onMediaSuccess(stream) {
 
         document.querySelector('#stop-recording').disabled = false;
         document.querySelector('#pause-recording').disabled = false;
+
+        document.querySelector('#save').onclick = function (){
+            this.disabled = true;
+            multiStreamRecorder.save();
+        };
     }, false);
 
     video.play();
