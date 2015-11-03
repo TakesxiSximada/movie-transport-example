@@ -6,7 +6,6 @@ from tornado.web import (
     Application,
     RequestHandler,
     )
-from tornado.websocket import WebSocketHandler
 from tornado.ioloop import IOLoop
 from sandstorm.handlers import YAStaticFileHandler as StaticFileHandler
 
